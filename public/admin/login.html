@@ -31,7 +31,7 @@
 //1.登录的验证,邮箱和密码必须填,如果不填弹出对话提示用户-ok
 //2.发送ajax请求,验证通过跳到首页index.html
 $('#loginBtn').click(function (e) { 
-  e.preventDefault();
+  // e.preventDefault();
   let email = $('#email').val()
   let password = $('#password').val()
   if(email.trim().length==0){
@@ -42,15 +42,18 @@ $('#loginBtn').click(function (e) {
     alert('密码不能为空')
     return
   }
+
   $.post("http://localhost:3000/login", {email,password},
     function (data, textStatus, jqXHR) {
       // console.log(data)
+      // undefinedFunction()
       location.href = 'index.html'
     }
   ).fail(function(error){
     // console.log(error)
     alert('邮箱地址或者密码错误')
   })
+  // return false
   //$.post的失败回调怎么来写
   //1:知道 2:不知道
   //文档里面没写,怎么办?

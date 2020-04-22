@@ -6,12 +6,27 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="">跳转</a>
-    <form id="form">
-        <input type="submit">提交</form>
-    </form>
+    <div id="parent" style="width: 400px;height: 400px;background-color: brown;">
+        <div id="son" style="width: 200px;height: 200px;background-color: forestgreen;"></div>
+    </div>
 </body>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 <script>
+// document.getElementById('parent').onclick = function(){
+//     console.log('点击了parent')
+// }    
+// document.getElementById('son').onclick = function(e){
+//     e.stopPropagation()
+//     console.log('点击了son')
+// }
+$('#parent').on('click',function(){
+    console.log('点击了parent')
+})
 
+$('#son').on('click',function(e){
+    // e.stopPropagation()
+    console.log('点击了son')
+    return false
+})
 </script>
 </html>
