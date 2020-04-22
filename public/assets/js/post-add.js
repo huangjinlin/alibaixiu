@@ -1,5 +1,8 @@
 jQuery || require('jquery')
 
+//getParams这个方法可以怎么去优化
+//1不知道
+/*
 function getParams (paramName) {
     var str = location.search.substr(1)
     var arr = str.split('&')
@@ -13,7 +16,31 @@ function getParams (paramName) {
     }
     return -1
 }
+*/
+//老师想给大家讲的是那种方式?
+//我不想写工具性代码
+//1.借着第三方模块
+//https://www.npmjs.com/package/query-string
+//学了vue的脚手架才能使用npm,react,小程序都有'脚手架'
+//2.用javascript自带api
+// URLSearchParams
+// https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams
+/*
+function getParams (paramName) {
+    //?id=123&age=100
+    var str = location.search.substr(1)//str=id=123&age=100
+    var arr = str.split('&')//["id=123","age=100"]
+    var result = arr.map(item=> item.split('='))//[["id","123"],["age","100"]]
+    var find = result.find(item=>item[0]==paramName)
+    return find ? find[1] : -1
+}
+*/
+function getParams (paramName) {
+    var searchParams = new URLSearchParams(location.search);
+    return searchParams.get(paramName) ? searchParams.get(paramName) : -1
+}
 var id  = getParams('id')
+console.log('id', id)
 if(id !== -1){
     //编辑
     $.get("/posts/"+id,
@@ -49,7 +76,7 @@ if(id !== -1){
         },
     );
 }
-console.log('id',id)
+// console.log('id',id)
 
 
 $('#feature').change(function (e) { 
