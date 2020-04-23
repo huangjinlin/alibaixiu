@@ -92,18 +92,7 @@
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script src="../assets/vendors/art-template/template-web.js"></script>
   <script>NProgress.done()</script>
-  <script>
-    $('#logoutBtn').click(function (e) { 
-      e.preventDefault();
-      if(confirm('确定退出?')){
-        $.post("/logout",
-          function (data, textStatus, jqXHR) {
-            location.href = "./login.html"
-          },
-        );
-      }
-    });
-  </script>
+  <script src="../assets/js/common.js"></script>
   <script src="../assets/js/index.js"></script>
 </body>
 </html>

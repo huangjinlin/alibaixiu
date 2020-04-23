@@ -78,8 +78,7 @@ if(id !== -1){
 }
 // console.log('id',id)
 
-
-$('#feature').change(function (e) { 
+$('#parentBox').on('change', '#feature', function (e) { 
     e.preventDefault();
     let formData = new FormData()
     formData.set('thumbnail', this.files[0])
@@ -94,7 +93,7 @@ $('#feature').change(function (e) {
             $("#hiddenThumbnail").val(response[0].thumbnail)
         }
     })
-});
+})
 
 $('#addForm').submit(function (e) { 
     e.preventDefault();

@@ -12,11 +12,6 @@ jQuery || require('jquery')
 
 //1.获取评论列表的数据-ok
 //2.写模板
-function formateDate(date) {
-	// 将日期时间字符串转换成日期对象
-	date = new Date(date);
-	return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
-}
 function changePage(page){
     $.get("/comments",{page},
         function (data, textStatus, jqXHR) {
