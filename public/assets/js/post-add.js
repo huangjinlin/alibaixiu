@@ -1,5 +1,4 @@
 jQuery || require('jquery')
-
 //getParams这个方法可以怎么去优化
 //1不知道
 /*
@@ -19,9 +18,11 @@ function getParams (paramName) {
 */
 //老师想给大家讲的是那种方式?
 //我不想写工具性代码
-//1.借着第三方模块
-//https://www.npmjs.com/package/query-string
+//1.1借着第三方模块-依赖'脚手架'
+//的第三方模块https://www.npmjs.com/package/query-string
 //学了vue的脚手架才能使用npm,react,小程序都有'脚手架'
+//1.2jquery的第三方模块(插件)
+//https://unpkg.com/
 //2.用javascript自带api
 // URLSearchParams
 // https://developer.mozilla.org/zh-CN/docs/Web/API/URLSearchParams
@@ -35,12 +36,19 @@ function getParams (paramName) {
     return find ? find[1] : -1
 }
 */
+/*
 function getParams (paramName) {
     var searchParams = new URLSearchParams(location.search);
     return searchParams.get(paramName) ? searchParams.get(paramName) : -1
 }
+*/
+function getParams(paramName){
+    return $.Querystring(paramName) ? $.Querystring(paramName) : -1
+}
 var id  = getParams('id')
 console.log('id', id)
+//还有没有其他简化方式?
+//1:不知道
 if(id !== -1){
     //编辑
     $.get("/posts/"+id,
